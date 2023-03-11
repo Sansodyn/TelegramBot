@@ -21,7 +21,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Main extends TelegramLongPollingBot {
-    private Map<Long, Integer> levels = new HashMap<>();
+    private static final Map<Long, Integer> levels = new HashMap<>();
+    private static final String BUTYA = "BatyaGusBot";
+    private static final String TOKEN = "6022085355:AAFuSiyoXKWmZ_n-fwluW9thqSm3-U1Q0Jk";
+
 
     public static void main(String[] args) throws TelegramApiException {
         TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
@@ -30,22 +33,20 @@ public class Main extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "BatyaGusBot";
+        return BUTYA;
     }
 
     @Override
     public String getBotToken() {
-        return "6022085355:AAFuSiyoXKWmZ_n-fwluW9thqSm3-U1Q0Jk";
+        return TOKEN;
     }
 
     @Override
     public void onUpdateReceived(Update update) {
         Long chatId = getChatId(update);
-
         if (update.hasMessage() && update.getMessage().getText().equals("/start")) {
 
             // send image
-
             sendImage("level-1", chatId);
 
             // send message
@@ -207,7 +208,7 @@ public class Main extends TelegramLongPollingBot {
     }
 
     public List<String> getRandom3(List<String> variants) {
-        ArrayList<String> copy = new ArrayList<>(variants);
+        List<String> copy = new ArrayList<>(variants);
         Collections.shuffle(copy);
         return copy.subList(0, 3);
     }
