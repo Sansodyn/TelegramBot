@@ -13,7 +13,12 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class Main extends TelegramLongPollingBot {
     private Map<Long, Integer> levels = new HashMap<>();
